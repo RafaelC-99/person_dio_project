@@ -5,11 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -35,7 +36,8 @@ public class PersonDTO {
     @CPF
     private String cpf;
 
-    private LocalDate birthDate;
+    @NotNull
+    private String birthDate;
 
     @Valid
     @NotEmpty
