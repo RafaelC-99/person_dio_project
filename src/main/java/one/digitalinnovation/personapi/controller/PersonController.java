@@ -40,18 +40,18 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException, one.digitalinnovation.personapi.execptions.PersonNotFoundException {
         return personService.findById(id);
     }
 
     @PutMapping("/{id}")
-    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid PersonDTO personDTO) throws PersonNotFoundException {
-        return personService.updateById(id, personDTO);
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid PersonDTO personDTO) throws PersonNotFoundException, one.digitalinnovation.personapi.execptions.PersonNotFoundException {
+        return personService.update(id, personDTO);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException, one.digitalinnovation.personapi.execptions.PersonNotFoundException {
         personService.delete(id);
     }
 }
